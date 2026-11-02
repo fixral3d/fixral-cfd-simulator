@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://fixral3d.github.io/fixral-cfd-simulator/sitemap.xml

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://fixral3d.github.io/fixral-cfd-simulator/</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://fixral3d.github.io/fixral-cfd-simulator/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://fixral3d.github.io/fixral-cfd-simulator/"/>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image><image:loc>https://fixral3d.github.io/fixral-cfd-simulator/og-image.jpg</image:loc><image:title>Fixral CFD Simulator</image:title></image:image>
+    <image:image><image:loc>https://fixral3d.github.io/fixral-cfd-simulator/screenshots/streamlines.jpg</image:loc><image:title>Araç etrafında akım çizgileri</image:title></image:image>
+    <image:image><image:loc>https://fixral3d.github.io/fixral-cfd-simulator/screenshots/water-channel.jpg</image:loc><image:title>Kanalda serbest yüzeyli su akışı</image:title></image:image>
+    <image:image><image:loc>https://fixral3d.github.io/fixral-cfd-simulator/screenshots/water-dye.jpg</image:loc><image:title>Su tünelinde boya ile Kármán girdap caddesi</image:title></image:image>
+  </url>
+</urlset>

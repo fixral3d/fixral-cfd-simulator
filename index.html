@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0e1012" />
+  <title>Fixral CFD Simulator · Ücretsiz online rüzgar ve su tüneli</title>
+  <meta name="description" content="STL, OBJ, 3MF ve STEP modellerini tarayıcıda hava ve su akışında simüle edin: Cd, Cl, basınç, akım çizgileri, serbest yüzeyli su. Ücretsiz, kurulumsuz, WebGPU." />
+  <meta name="keywords" content="Fixral, Fixral CFD, CFD, CFD simülasyonu, online CFD, tarayıcıda CFD, ücretsiz CFD programı, CFD yazılımı, akış simülasyonu, hava akışı simülasyonu, su akışı simülasyonu, rüzgar tüneli, sanal rüzgar tüneli, online rüzgar tüneli, su tüneli, aerodinamik analiz, aerodinamik simülasyon, hidrodinamik, sürükleme katsayısı, Cd hesaplama, sürükleme kuvveti hesaplama, taşıma katsayısı, basınç dağılımı, akım çizgileri, serbest yüzey, kanal akışı, Reynolds sayısı, Froude sayısı, STL akış analizi, STEP akış analizi, 3D model akış simülasyonu, 3D baskı aerodinamik, drone aerodinamiği, araç aerodinamiği, computational fluid dynamics, free CFD software, online CFD simulator, browser CFD, web CFD, virtual wind tunnel, online wind tunnel, airflow simulation, water flow simulation, fluid simulation, aerodynamics simulator, drag coefficient calculator, lift coefficient, pressure distribution, streamlines, free surface water simulation, open channel flow, STL CFD, STEP CFD, OBJ CFD, 3MF, Lattice Boltzmann, LBM, D3Q19, MLS-MPM, WebGPU, WebGPU CFD, three.js" />
+  <meta name="author" content="Erdem Erciyas" />
+  <meta name="application-name" content="Fixral CFD Simulator" />
+  <meta name="apple-mobile-web-app-title" content="Fixral CFD" />
+  <meta name="generator" content="Fixral CFD Simulator v0.2.0" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+  <meta name="googlebot" content="index, follow" />
+  <meta name="format-detection" content="telephone=no" />
+  <link rel="canonical" href="https://fixral3d.github.io/fixral-cfd-simulator/" />
+  <link rel="alternate" hreflang="tr" href="https://fixral3d.github.io/fixral-cfd-simulator/" />
+  <link rel="alternate" hreflang="x-default" href="https://fixral3d.github.io/fixral-cfd-simulator/" />
+  <!-- Open Graph / sosyal paylaşım -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Fixral CFD Simulator" />
+  <meta property="og:title" content="Fixral CFD Simulator — tarayıcıda hava ve su akış simülasyonu" />
+  <meta property="og:description" content="Ücretsiz online rüzgar ve su tüneli: 3D modelini yükle, sürükleme/taşıma katsayısını, basınç dağılımını, akım çizgilerini ve serbest yüzeyli suyu WebGPU ile anında gör. Free in-browser CFD for STL/STEP models." />
+  <meta property="og:url" content="https://fixral3d.github.io/fixral-cfd-simulator/" />
+  <meta property="og:image" content="https://fixral3d.github.io/fixral-cfd-simulator/og-image.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Fixral CFD Simulator: bir araç modelinin etrafında hız renkli akım çizgileri ve kanalda serbest yüzeyli su" />
+  <meta property="og:locale" content="tr_TR" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Fixral CFD Simulator — free in-browser airflow & water simulation" />
+  <meta name="twitter:description" content="Online wind & water tunnel: drag/lift coefficients, pressure, streamlines and free-surface water for STL/OBJ/3MF/STEP models. WebGPU, no install, files never leave your device." />
+  <meta name="twitter:image" content="https://fixral3d.github.io/fixral-cfd-simulator/og-image.jpg" />
+  <meta name="twitter:image:alt" content="Streamlines around a car and free-surface water in a channel, simulated in the browser" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="icon-192.png" type="image/png" sizes="192x192" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Fixral CFD Simulator",
+      "alternateName": ["Fixral CFD", "Fixral CFD Aero Lab", "Fixral Aero Lab", "Fixral"],
+      "url": "https://fixral3d.github.io/fixral-cfd-simulator/",
+      "image": "https://fixral3d.github.io/fixral-cfd-simulator/og-image.jpg",
+      "screenshot": [
+        "https://fixral3d.github.io/fixral-cfd-simulator/screenshots/streamlines.jpg",
+        "https://fixral3d.github.io/fixral-cfd-simulator/screenshots/water-channel.jpg",
+        "https://fixral3d.github.io/fixral-cfd-simulator/screenshots/water-dye.jpg",
+        "https://fixral3d.github.io/fixral-cfd-simulator/screenshots/results.jpg"
+      ],
+      "description": "Free in-browser computational fluid dynamics (CFD) simulator. Load STL, OBJ, 3MF or STEP models and simulate air and water flow: drag and lift coefficients, forces, pressure distribution, streamlines, dye visualisation and free-surface water in channels or external streams. GPU-accelerated with WebGPU (Lattice Boltzmann D3Q19 and MLS-MPM); models never leave the device.",
+      "applicationCategory": "EngineeringApplication",
+      "applicationSubCategory": "Computational fluid dynamics",
+      "operatingSystem": "Any (modern web browser)",
+      "browserRequirements": "Requires JavaScript and WebGL 2; WebGPU recommended (Chrome, Edge, Safari 26+, Firefox 141+ on Windows)",
+      "softwareVersion": "0.2.0",
+      "isAccessibleForFree": true,
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "inLanguage": ["tr"],
+      "author": { "@type": "Person", "name": "Erdem Erciyas" },
+      "publisher": { "@type": "Organization", "name": "Fixral", "url": "https://fixral.com" },
+      "featureList": [
+        "Air and water flow simulation in the browser",
+        "STL, OBJ, 3MF, STEP/STP and IGES import",
+        "Drag and lift coefficients, forces, drag power, Reynolds and Froude numbers",
+        "Streamlines, surface pressure, surface velocity, pathlines, dye/smoke and slice views",
+        "Free-surface water: open channel and external stream with depth, width and viscosity controls",
+        "Speed units m/s, km/h, mph, knot, ft/s and six flow directions",
+        "Inspect probe, adaptive quality and customisable display",
+        "WebGPU Lattice Boltzmann (D3Q19, LES) and MLS-MPM solvers with CPU fallback",
+        "PNG, CSV and JSON export"
+      ]
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script type="module" crossorigin src="./assets/index-CTam_I4s.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-DOxBLBX8.css">
+</head>
+<body>
+  <noscript>
+    <section style="max-width:760px;margin:40px auto;padding:0 20px;font-family:system-ui,sans-serif;color:#e6e8eb;line-height:1.6">
+      <h1>Fixral CFD Simulator — tarayıcıda hava ve su akış simülasyonu</h1>
+      <p>Fixral CFD Simulator, STL, OBJ, 3MF ve STEP modellerini sanal bir rüzgâr veya su tünelinde simüle eden ücretsiz bir web uygulamasıdır. Sürükleme ve taşıma katsayısı (Cd, Cl), kuvvet, basınç dağılımı, akım çizgileri, boya/duman görselleştirmesi ve kanal ya da dış akıntı modunda serbest yüzeyli su sunar. Hesaplama WebGPU ile cihazınızda yapılır; dosyanız hiçbir sunucuya yüklenmez.</p>
+      <p><strong>English:</strong> Fixral CFD Simulator is a free in-browser CFD tool: an online wind and water tunnel for STL/OBJ/3MF/STEP models with drag and lift coefficients, pressure, streamlines and free-surface water, accelerated by WebGPU.</p>
+      <p>Bu uygulama için JavaScript ve WebGL gerekir. / This app requires JavaScript and WebGL.</p>
+    </section>
+  </noscript>
+  <header class="bar">
+    <a class="brand" href="https://fixral.com" target="_blank" rel="noopener" title="Fixral">
+      <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="1" y="1" width="30" height="30" rx="3" fill="#16191d" stroke="#ffb020" stroke-width="1.5"/><path d="M6 19c4-6 12-7 20-4-7 2-13 3-20 4Z" fill="#ffb020"/><path d="M5 11h9M5 24h13" stroke="#7a828c" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <span class="brand-text"><b>Fixral CFD</b><small>AERO LAB · v0.2</small></span>
+    </a>
+    <div class="runbar">
+      <button class="run-btn" id="playBtn" title="Başlat / duraklat (Boşluk)"><svg viewBox="0 0 24 24"><path d="M7 5v14l11-7z"/></svg></button>
+      <div class="run-state"><i class="dot" id="hudDot"></i><b id="hudState">HAZIR</b><span id="hudSolver">D3Q19</span></div>
+    </div>
+    <div class="readouts hud" id="hud">
+      <div class="ro"><span>Adım</span><b id="hStep">0</b></div>
+      <div class="ro"><span>FPS</span><b id="hFps">—</b></div>
+      <div class="ro"><span>MLUPS</span><b id="hMlups">—</b></div>
+      <div class="ro"><span>C<sub>d</sub></span><b id="hCd">—</b></div>
+      <div class="ro"><span>Re</span><b id="hRe">—</b></div>
+      <canvas id="spark" width="150" height="28" aria-label="Cd geçmişi"></canvas>
+    </div>
+    <div class="bar-right">
+      <span class="chip" id="fluidChip">Hava · 30 m/s</span>
+      <button class="icon-btn" id="helpBtn" title="Nasıl çalışır?">?</button>
+      <button class="icon-btn" id="aboutBtn" title="Hakkında">i</button>
+    </div>
+  </header>
+
+  <main class="app">
+    <nav class="rail" id="steps" aria-label="Adımlar">
+      <button data-go="1" class="active" title="Model (1)"><svg viewBox="0 0 24 24"><path d="M12 3 20 7.5v9L12 21l-8-4.5v-9z"/><path d="M4 7.5 12 12l8-4.5M12 12v9"/></svg><span>Model</span></button>
+      <button data-go="2" title="Ortam (2)"><svg viewBox="0 0 24 24"><path d="M3 8h10a3 3 0 1 0-3-3M3 12h14a3 3 0 1 1-3 3M3 16h7"/></svg><span>Ortam</span></button>
+      <button data-go="3" title="Simülasyon (3)"><svg viewBox="0 0 24 24"><path d="M3 17c3-6 6-6 9 0s6 6 9 0"/><path d="M3 9c3-4 6-4 9 0s6 4 9 0" opacity=".55"/></svg><span>Simülasyon</span></button>
+      <button data-go="4" title="Sonuçlar (4)"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><span>Sonuçlar</span></button>
+    </nav>
+    <aside class="panel" id="panel">
+      <!-- STEP 1 -->
+      <section class="step" data-step="1">
+        <div class="step-head"><span class="kicker">Adım 1</span><h2>Modeli yükle</h2><p>STL, OBJ, 3MF, STEP/STP ve IGES desteklenir. Model cihazınızda işlenir, hiçbir sunucuya yüklenmez.</p></div>
+        <label class="dropzone" id="dropzone">
+          <input type="file" id="fileInput" hidden />
+          <svg viewBox="0 0 24 24"><path d="M12 16V4m0 0-4 4m4-4 4 4M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+          <b>Dosya seç veya buraya bırak</b>
+          <span>.stl · .obj · .3mf · .step · .stp · .iges</span>
+        </label>
+        <h3>Örnek modeller</h3>
+        <div class="samples" id="samples"></div>
+        <div class="card" id="modelCard" hidden>
+          <div class="row between"><b id="mName">—</b><span class="tag" id="mTris">—</span></div>
+          <div class="kv"><span>Boyutlar</span><b id="mDims">—</b></div>
+          <div class="row between"><span class="muted">Dosya birimi</span>
+            <div class="seg small" id="unitSeg"><button data-unit="mm">mm</button><button data-unit="cm">cm</button><button data-unit="m">m</button><button data-unit="in">inç</button></div>
+          </div>
+        </div>
+        <h3>Akışa göre yönlendirme</h3>
+        <p class="hint">Akış her zaman <b class="x">+X</b> yönünde. Modelin burnu akışa (sola) bakmalı.</p>
+        <div class="btn-row" id="rotBtns">
+          <button class="btn ghost" data-rot="x">X +90°</button>
+          <button class="btn ghost" data-rot="y">Y +90°</button>
+          <button class="btn ghost" data-rot="z">Z +90°</button>
+          <button class="btn ghost" data-rot="reset">Sıfırla</button>
+        </div>
+        <div class="field"><label>Hücum açısı (α) <output id="aoaOut">0°</output></label><input type="range" id="aoa" min="-20" max="20" step="0.5" value="0" /></div>
+        <div class="field"><label>Sapma açısı (β) <output id="yawOut">0°</output></label><input type="range" id="yaw" min="-45" max="45" step="1" value="0" /></div>
+      </section>
+
+      <!-- STEP 2 -->
+      <section class="step" data-step="2" hidden>
+        <div class="step-head"><span class="kicker">Adım 2</span><h2>Akışkan ve ortam</h2><p>Akışkanı, serbest akış hızını ve çözüm ağı yoğunluğunu seçin.</p></div>
+        <div class="fluid-cards" id="fluidCards">
+          <button class="fluid-card" data-fluid="air">
+            <svg viewBox="0 0 24 24"><path d="M3 8h11a3 3 0 1 0-3-3M3 12h15a3 3 0 1 1-3 3M3 16h8"/></svg>
+            <b>Hava</b><span>ρ 1.204 kg/m³<br />ν 1.52·10⁻⁵ m²/s</span>
+          </button>
+          <button class="fluid-card" data-fluid="water">
+            <svg viewBox="0 0 24 24"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11Z"/></svg>
+            <b>Su</b><span>ρ 998 kg/m³<br />ν 1.00·10⁻⁶ m²/s</span>
+          </button>
+        </div>
+        <div id="waterEnv" hidden>
+          <h3>Su ortamı</h3>
+          <div class="env-cards" id="waterModeSeg">
+            <button data-wmode="channel"><b>Kanal / kutu</b><small>Taban + iki yan duvar; serbest yüzeyli su kanaldan akar</small></button>
+            <button data-wmode="stream"><b>Dış kaynaklı akıntı</b><small>Dışarıdan gelen su akıntısı modele çarpar, serbestçe dağılır</small></button>
+            <button data-wmode="submerged"><b>Tamamen batık</b><small>Sınırsız su içinde model; nicel kuvvetler (LBM)</small></button>
+          </div>
+          <div class="field" id="depthField"><label>Su yüksekliği <output id="depthOut">65%</output></label><input type="range" id="waterDepth" min="5" max="150" step="1" value="65" /></div>
+          <div class="field" id="widthField"><label>Akıntı genişliği <output id="widthOut">40%</output></label><input type="range" id="waterWidth" min="10" max="100" step="1" value="40" /></div>
+          <div class="field"><label>Viskozite <output id="viscOut">1,0 mPa·s</output></label><input type="range" id="viscosity" min="0" max="1000" step="1" /></div>
+          <div class="field" id="qualityField"><label>Su kalitesi <output id="qualityOut">—</output></label>
+            <div class="seg small" id="qualitySeg"><button data-wq="auto" class="active">Otomatik</button><button data-wq="low">Düşük</button><button data-wq="medium">Orta</button><button data-wq="high">Yüksek</button></div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Akış hızı <output id="uOut">30 m/s</output></label>
+          <div class="row gap"><input type="number" id="uNum" class="num grow" step="0.1" min="0.01" /><select id="uUnit" class="select tiny unit-select"><option value="m/s">m/s</option><option value="km/h">km/h</option><option value="mph">mph</option><option value="kn">knot</option><option value="ft/s">ft/s</option></select></div>
+          <input type="range" id="uRange" min="0" max="1000" step="1" />
+          <div class="chips" id="uPresets"></div>
+        </div>
+        <div class="field"><label>Akış yönü <output id="dirOut">+X</output></label>
+          <div class="seg small" id="dirSeg"><button data-dir="+X" class="active">+X</button><button data-dir="-X">−X</button><button data-dir="+Y">+Y</button><button data-dir="-Y">−Y</button><button data-dir="+Z">+Z</button><button data-dir="-Z">−Z</button></div>
+        </div>
+        <label class="toggle" id="groundRow"><input type="checkbox" id="ground" /><span></span><div><b>Hareketli zemin</b><small>Araçlar için yol etkisi (zemin akışla aynı hızda kayar)</small></div></label>
+        <div id="gridBlock">
+        <h3>Çözüm ağı</h3>
+        <div class="seg grid-seg" id="gridSeg"></div>
+        <p class="hint" id="gridInfo"></p>
+        </div>
+        <details class="adv">
+          <summary>Gelişmiş</summary>
+          <div class="field"><label>Hesaplama birimi <output id="backendOut">—</output></label>
+            <div class="seg small" id="backendSeg"><button data-backend="gpu">WebGPU (ekran kartı)</button><button data-backend="cpu">CPU (iş parçacığı)</button></div>
+          </div>
+          <div class="field"><label>Smagorinsky sabiti C<sub>s</sub> (LES) <output id="csOut">0.16</output></label><input type="range" id="cs" min="0" max="0.25" step="0.01" value="0.16" /></div>
+          <p class="hint">0 = türbülans modeli kapalı (yalnızca düşük Re). Yüksek Reynolds akışlarında 0.10–0.18 önerilir.</p>
+        </details>
+        <div class="card derived">
+          <div class="kv"><span>Reynolds sayısı</span><b id="dRe">—</b></div>
+          <div class="kv"><span>Akış rejimi</span><b id="dRegime">—</b></div>
+          <div class="kv"><span>Referans uzunluk</span><b id="dL">—</b></div>
+          <div class="kv"><span>Model boyunca hücre</span><b id="dCells">—</b></div>
+          <div class="kv"><span>Hücre boyutu Δx</span><b id="dDx">—</b></div>
+          <div class="kv"><span>Zaman adımı Δt</span><b id="dDt">—</b></div>
+          <div class="kv"><span>Mach</span><b id="dMach">—</b></div>
+        </div>
+        <div id="warnings"></div>
+      </section>
+
+      <!-- STEP 3 -->
+      <section class="step" data-step="3" hidden>
+        <div class="step-head"><span class="kicker">Adım 3</span><h2>Simülasyon</h2><p>Kafes Boltzmann (D3Q19) çözücüsü tarayıcınızda, ayrı bir iş parçacığında çalışır.</p></div>
+        <div class="btn-row">
+          <button class="btn primary big" id="runBtn"><svg viewBox="0 0 24 24"><path d="M7 5v14l11-7z"/></svg><span>Simülasyonu başlat</span></button>
+          <button class="btn ghost" id="resetBtn" title="Sıfırla (R)">↺</button>
+        </div>
+        <div class="stats">
+          <div><span>Adım</span><b id="sStep">0</b></div>
+          <div><span>Hız</span><b id="sMlups">—</b></div>
+          <div><span>Fiziksel süre</span><b id="sTime">0 s</b></div>
+          <div><span>Hücre</span><b id="sCells">—</b></div>
+        </div>
+        <h3>Görünüm</h3>
+        <select id="viewSel" class="select"></select>
+        <div class="field" id="densityField"><label>Çizgi yoğunluğu <output id="densityOut">50%</output></label><input type="range" id="lineDensity" min="10" max="100" step="1" value="50" /></div>
+        <div class="field" id="areaField"><label>Akış alanı <output id="areaOut">90%</output></label><input type="range" id="flowArea" min="20" max="300" step="5" value="90" /></div>
+        <h3 id="layersTitle">Katmanlar</h3>
+        <div id="lbmLayers">
+        <label class="toggle"><input type="checkbox" id="vStream" /><span></span><div><b>Akım çizgileri</b><small>Girişten çıkışa hız alanı boyunca çizgiler</small></div></label>
+        <label class="toggle"><input type="checkbox" id="vDye" /><span></span><div><b id="dyeTitle">Sıvı akış (boya)</b><small id="dyeHint">Su kütlesinde akışla taşınan renkli boya şeritleri</small></div></label>
+        <div class="sub" id="dyeOpts">
+          <div class="seg small" id="dyeSeedSeg"><button data-dseed="vrake" class="active">Dikey tırmık</button><button data-dseed="volume">Izgara</button><button data-dseed="hrake">Yatay tırmık</button></div>
+          <div class="seg small" id="paletteSeg"><button data-pal="0" class="active">Renkli</button><button data-pal="1">Tek renk</button></div>
+          <div class="field"><label>Boya yoğunluğu <output id="dyeAmtOut">9</output></label><input type="range" id="dyeAmt" min="1" max="30" step="0.5" value="9" /></div>
+          <div class="field" id="waterField"><label>Su bulanıklığı <output id="waterOut">30%</output></label><input type="range" id="waterAmt" min="0" max="0.02" step="0.0005" value="0.006" /></div>
+        </div>
+        <label class="toggle"><input type="checkbox" id="vParticles" checked /><span></span><div><b>Akış izleyicileri</b><small>Hız alanında taşınan partiküller</small></div></label>
+        <div class="sub" id="particleOpts">
+          <div class="seg small" id="styleSeg"><button data-style="trails" class="active">Çizgi</button><button data-style="points">Partikül</button></div>
+          <div class="seg small" id="seedSeg"><button data-seed="volume" class="active">Hacim</button><button data-seed="vrake">Dikey tırmık</button><button data-seed="hrake">Yatay tırmık</button></div>
+          <div class="field"><label>Yoğunluk <output id="countOut">2500</output></label><input type="range" id="count" min="500" max="9000" step="100" value="2500" /></div>
+          <div class="field"><label>Animasyon hızı <output id="speedOut">6</output></label><input type="range" id="speed" min="1" max="16" step="0.5" value="6" /></div>
+        </div>
+        <label class="toggle"><input type="checkbox" id="vSlice" /><span></span><div><b>Kesit düzlemi</b><small>Hız, basınç veya girdap haritası</small></div></label>
+        <div class="sub" id="sliceOpts">
+          <div class="seg small" id="axisSeg"><button data-axis="z" class="active">Yan (XY)</button><button data-axis="y">Üst (XZ)</button><button data-axis="x">Kesit (YZ)</button></div>
+          <select id="sliceField" class="select">
+            <option value="speed">Hız büyüklüğü</option>
+            <option value="ux">Akış yönü hızı (ters akış)</option>
+            <option value="pressure">Basınç katsayısı Cp</option>
+            <option value="vorticity">Girdap şiddeti</option>
+          </select>
+          <div class="field"><label>Konum <output id="slicePosOut">50%</output></label><input type="range" id="slicePos" min="0" max="1" step="0.005" value="0.5" /></div>
+        </div>
+        <label class="toggle"><input type="checkbox" id="vSurface" /><span></span><div><b>Model yüzeyi</b><small>Basınç (Cp) veya duvar yakını hız</small></div></label>
+        <div class="sub" id="surfaceOpts"><div class="seg small" id="surfSeg"><button data-surf="pressure" class="active">Basınç</button><button data-surf="velocity">Hız</button></div></div>
+        <label class="toggle"><input type="checkbox" id="vVoxels" /><span></span><div><b>Voksel ağı</b><small>Çözücünün gördüğü katı hücreler</small></div></label>
+        </div>
+        <div class="field"><label>Model opaklığı <output id="opOut">100%</output></label><input type="range" id="opacity" min="0.1" max="1" step="0.05" value="1" /></div>
+      </section>
+
+      <!-- STEP 4 -->
+      <section class="step" data-step="4" hidden>
+        <div class="step-head"><span class="kicker">Adım 4</span><h2>Sonuçlar</h2><p>Kuvvetler momentum değişimi yöntemiyle her adımda hesaplanır; değerler son pencerenin ortalamasıdır.</p></div>
+        <div class="metrics">
+          <div class="metric accent"><span>Sürükleme katsayısı</span><b id="rCd">—</b><small>C<sub>d</sub></small></div>
+          <div class="metric"><span>Taşıma katsayısı</span><b id="rCl">—</b><small>C<sub>l</sub> (+ yukarı)</small></div>
+          <div class="metric"><span>Sürükleme kuvveti</span><b id="rFd">—</b><small id="rFdKg">—</small></div>
+          <div class="metric"><span>Taşıma / bastırma</span><b id="rFl">—</b><small id="rFlKg">—</small></div>
+          <div class="metric"><span>Sürükleme gücü</span><b id="rP">—</b><small>P = F<sub>d</sub> · U</small></div>
+          <div class="metric"><span>Reynolds</span><b id="rRe">—</b><small id="rRegime">—</small></div>
+        </div>
+        <div class="card">
+          <div class="row between"><b>Yakınsama</b><span class="tag" id="rConv">—</span></div>
+          <canvas id="chart" height="150"></canvas>
+          <div class="legend-inline"><i class="c1"></i>C<sub>d</sub> <i class="c2"></i>C<sub>l</sub></div>
+        </div>
+        <div class="card">
+          <div class="kv"><span>Referans alan</span><span class="row gap"><select id="refArea" class="select tiny"><option value="frontal">Ön izdüşüm</option><option value="planform">Üstten (planform)</option></select><b id="rA">—</b></span></div>
+          <div class="kv"><span>Maks. hız</span><b id="rVmax">—</b></div>
+          <div class="kv"><span>Basınç aralığı (göreli)</span><b id="rP2">—</b></div>
+          <div class="kv" id="cavRow" hidden><span>Kavitasyon riski</span><b id="rCav">—</b></div>
+          <div class="kv"><span>Çözünürlük kalitesi</span><b id="rQual">—</b></div>
+        </div>
+        <p class="hint">Fixral CFD bir <b>ön tasarım</b> aracıdır: eğilimleri, ayrılma bölgelerini ve tasarım karşılaştırmalarını hızlıca gösterir. Sertifikasyon veya nihai mühendislik kararları için ayrıntılı RANS/LES analizi ile doğrulayın.</p>
+        <div class="btn-row">
+          <button class="btn" id="exPng">PNG görüntü</button>
+          <button class="btn" id="exCsv">CSV geçmiş</button>
+          <button class="btn" id="exJson">JSON rapor</button>
+        </div>
+      </section>
+
+      <footer class="panel-nav">
+        <button class="btn ghost" id="prevBtn">← Geri</button>
+        <button class="btn primary" id="nextBtn">İleri →</button>
+      </footer>
+    </aside>
+
+    <div class="stage" id="stage">
+      <div id="viewport"></div>
+      <div class="flowbadge" id="flowBadge"><span class="arrow">→</span><span id="flowText">Hava · 30 m/s</span></div>
+      <div class="legends" id="legends"></div>
+      <div class="toolbar" id="toolbar">
+        <button data-view="persp" title="Perspektif">3B</button>
+        <button data-view="side" title="Yandan">Yan</button>
+        <button data-view="top" title="Üstten">Üst</button>
+        <button data-view="front" title="Önden">Ön</button>
+        <i class="sep"></i>
+        <button data-tog="vDye" title="Sıvı boya / duman" id="tbDye">Sıvı</button>
+        <button data-tog="vParticles" title="Akış izleyicileri (partikül)">Partikül</button>
+        <button data-tog="vSlice" title="Kesit düzlemi">Kesit</button>
+        <button data-tog="vSurface" title="Model yüzeyi (basınç/hız)">Yüzey</button>
+        <button id="probeBtn" title="İncele: imleçle hız/basınç oku (I)">İncele</button>
+      </div>
+      <button class="cta" id="cta"><svg viewBox="0 0 24 24"><path d="M7 5v14l11-7z"/></svg> Simülasyonu başlat <kbd>Boşluk</kbd></button>
+      <div class="drop-overlay" id="dropOverlay"><div><b>Bırak, simüle edelim</b><span>STL · OBJ · 3MF · STEP</span></div></div>
+      <div class="busy" id="busy" hidden><i class="spinner"></i><span id="busyText">Yükleniyor…</span></div>
+      <div class="toast" id="toast" hidden></div>
+      <div class="probe-tip glass" id="probeTip" hidden></div>
+      <button class="eye-btn glass" id="displayBtn" title="Görünüm ayarları: ne görünsün, ne gizlensin (V)">
+        <svg viewBox="0 0 24 24"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>
+      </button>
+      <div class="display-panel glass" id="displayPanel" hidden>
+        <div class="row between"><b>Görünüm</b><button class="icon-btn small" id="displayClose" title="Kapat">×</button></div>
+        <label class="dp-label">Performans</label>
+        <div class="seg small" id="dpPerf"><button data-dp="auto">Otomatik</button><button data-dp="quality">Kalite</button><button data-dp="eco">Eko</button></div>
+        <label class="dp-label">Arka plan</label>
+        <div class="seg small" id="dpBackground"><button data-dp="studio">Grafit</button><button data-dp="night">Gece</button><button data-dp="light">Açık</button></div>
+        <label class="dp-label">Işık</label>
+        <div class="seg small" id="dpLighting"><button data-dp="studio">Stüdyo</button><button data-dp="soft">Yumuşak</button><button data-dp="vivid">Canlı</button></div>
+        <label class="dp-label">Gölge</label>
+        <div class="seg small" id="dpShadows"><button data-dp="off">Kapalı</button><button data-dp="low">Düşük</button><button data-dp="high">Yüksek</button></div>
+        <label class="dp-label">Model rengi</label>
+        <div class="swatches" id="dpColor">
+          <button data-color="#d7dce2" style="--c:#d7dce2" title="Alüminyum"></button><button data-color="#f2f2f2" style="--c:#f2f2f2" title="Beyaz"></button>
+          <button data-color="#ffb020" style="--c:#ffb020" title="Kehribar"></button><button data-color="#e2553d" style="--c:#e2553d" title="Kırmızı"></button>
+          <button data-color="#5ab8ff" style="--c:#5ab8ff" title="Buz mavisi"></button><button data-color="#3a3f47" style="--c:#3a3f47" title="Antrasit"></button>
+          <input type="color" id="dpColorPick" title="Özel renk" />
+        </div>
+        <label class="dp-label">Göster</label>
+        <div class="dp-checks" id="dpChecks">
+          <label><input type="checkbox" data-show="model" />Model</label>
+          <label><input type="checkbox" data-show="domain" />Tünel / alan kutusu</label>
+          <label><input type="checkbox" data-show="arrows" />Giriş okları</label>
+          <label><input type="checkbox" data-show="grid" />Zemin ızgarası</label>
+          <label><input type="checkbox" data-show="gizmo" />Eksen göstergesi</label>
+          <label><input type="checkbox" data-show="bloom" />Parlama efekti</label>
+          <label><input type="checkbox" data-ui="legend" />Renk lejantı</label>
+          <label><input type="checkbox" data-ui="hud" />Ölçüm şeridi</label>
+          <label><input type="checkbox" data-ui="badge" />Akış rozeti</label>
+          <label><input type="checkbox" data-ui="toolbar" />Araç çubuğu</label>
+        </div>
+        <button class="btn ghost small-btn" id="dpReset">Varsayılanlara dön</button>
+      </div>
+    </div>
+  </main>
+
+  <dialog id="helpDlg" class="dlg">
+    <h2>Nasıl çalışır?</h2>
+    <ol>
+      <li><b>Vokselleştirme.</b> Model, çözüm ağına (ör. 128×64×64 = 524 bin hücre) ışın atma + sarım sayısı yöntemiyle yerleştirilir.</li>
+      <li><b>Kafes Boltzmann (LBM).</b> Her hücrede 19 yönlü (D3Q19) parçacık dağılımları çarpışır ve komşulara akar. Türbülans Smagorinsky LES ile modellenir.</li>
+      <li><b>Sınır koşulları.</b> Girişte sabit hız, çıkışta sıfır gradyan, yanlarda serbest akış, modelde yarı-yol geri sekme (no-slip). İsteğe bağlı hareketli zemin.</li>
+      <li><b>Kuvvetler.</b> Duvara çarpan dağılımların momentum değişiminden sürükleme ve taşıma hesaplanır, fiziksel birimlere (ρ, U, alan) ölçeklenir.</li>
+      <li><b>Görselleştirme.</b> Hız alanı ~10 Hz'de ana iş parçacığına aktarılır; izleyiciler RK2 ile taşınır, kesitler ve yüzey basıncı GPU'da çizilir.</li>
+      <li><b>Serbest yüzeyli su.</b> "Kanal / kutu" ve "Dış kaynaklı akıntı" modlarında su, WebGPU üzerinde MLS-MPM partikül yöntemiyle (yerçekimi, viskozite, sıçrama) çözülür ve ekran-uzayı sıvı render'ı ile pürüzsüz yüzey olarak çizilir. "Tamamen batık" mod nicel kuvvetler için LBM kullanır.</li>
+      <li><b>Görünümler.</b> Akım çizgileri, yüzey basıncı/hızı, boya, kesit, su yüzeyi; sağ alttaki göz simgesinden arka plan, ışık, gölge ve hangi yardımcıların görüneceği kişiselleştirilir.</li>
+    </ol>
+    <p class="hint">Kısayollar: <kbd>Boşluk</kbd> başlat/duraklat · <kbd>R</kbd> sıfırla · <kbd>P</kbd> paneli gizle · <kbd>1–4</kbd> adımlar · <kbd>S</kbd> kesit · <kbd>I</kbd> incele · <kbd>V</kbd> görünüm paneli</p>
+    <form method="dialog"><button class="btn primary">Tamam</button></form>
+  </dialog>
+  <dialog id="aboutDlg" class="dlg">
+    <h2>Fixral CFD Simulator</h2>
+    <p>Tarayıcıda çalışan, kurulum gerektirmeyen hava ve su akış simülatörü. Modelleriniz cihazınızdan çıkmaz.</p>
+    <p class="hint">Çözücü: D3Q19 LBM + Smagorinsky LES (Fixral, sıfırdan yazılmıştır). Görselleştirme: three.js (MIT). STEP içe aktarma: occt-import-js / OpenCascade (LGPL-2.1, CDN'den ayrı WASM olarak yüklenir).</p>
+    <p class="hint">Diğer Fixral araçları: <a href="https://fixral3d.github.io/fixral-3d-splitter/" target="_blank" rel="noopener">3D Splitter</a> · <a href="https://fixral3d.github.io/cnc-controller/" target="_blank" rel="noopener">CNC Router Studio</a> · <a href="https://fixral.com" target="_blank" rel="noopener">fixral.com</a></p>
+    <form method="dialog"><button class="btn primary">Kapat</button></form>
+  </dialog>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+{
+  "name": "Fixral CFD Simulator",
+  "short_name": "Fixral CFD",
+  "description": "Free in-browser air and water flow simulator (CFD) for STL, OBJ, 3MF and STEP models: drag, lift, pressure, streamlines and free-surface water.",
+  "lang": "tr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0e1012",
+  "theme_color": "#0e1012",
+  "categories": [
+    "education",
+    "productivity",
+    "utilities"
+  ],
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "screenshots/streamlines.jpg",
+      "sizes": "1600x940",
+      "type": "image/jpeg",
+      "form_factor": "wide",
+      "label": "Akım çizgileri"
+    },
+    {
+      "src": "screenshots/water-channel.jpg",
+      "sizes": "1600x940",
+      "type": "image/jpeg",
+      "form_factor": "wide",
+      "label": "Serbest yüzeyli su"
+    }
+  ]
+}
