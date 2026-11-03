@@ -10,12 +10,14 @@
   <meta name="author" content="Erdem Erciyas" />
   <meta name="application-name" content="Fixral CFD Simulator" />
   <meta name="apple-mobile-web-app-title" content="Fixral CFD" />
-  <meta name="generator" content="Fixral CFD Simulator v0.2.0" />
+  <meta name="generator" content="Fixral CFD Simulator v0.3.0" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
   <meta name="googlebot" content="index, follow" />
   <meta name="format-detection" content="telephone=no" />
   <link rel="canonical" href="https://fixral3d.github.io/fixral-cfd-simulator/" />
   <link rel="alternate" hreflang="tr" href="https://fixral3d.github.io/fixral-cfd-simulator/" />
+  <link rel="alternate" hreflang="en" href="https://fixral3d.github.io/fixral-cfd-simulator/?lang=en" />
+  <link rel="alternate" hreflang="de" href="https://fixral3d.github.io/fixral-cfd-simulator/?lang=de" />
   <link rel="alternate" hreflang="x-default" href="https://fixral3d.github.io/fixral-cfd-simulator/" />
   <!-- Open Graph / sosyal paylaşım -->
   <meta property="og:type" content="website" />
@@ -30,6 +32,7 @@
   <meta property="og:image:alt" content="Fixral CFD Simulator: bir araç modelinin etrafında hız renkli akım çizgileri ve kanalda serbest yüzeyli su" />
   <meta property="og:locale" content="tr_TR" />
   <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:locale:alternate" content="de_DE" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Fixral CFD Simulator — free in-browser airflow & water simulation" />
   <meta name="twitter:description" content="Online wind & water tunnel: drag/lift coefficients, pressure, streamlines and free-surface water for STL/OBJ/3MF/STEP models. WebGPU, no install, files never leave your device." />
@@ -58,10 +61,10 @@
       "applicationSubCategory": "Computational fluid dynamics",
       "operatingSystem": "Any (modern web browser)",
       "browserRequirements": "Requires JavaScript and WebGL 2; WebGPU recommended (Chrome, Edge, Safari 26+, Firefox 141+ on Windows)",
-      "softwareVersion": "0.2.0",
+      "softwareVersion": "0.3.0",
       "isAccessibleForFree": true,
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-      "inLanguage": ["tr"],
+      "inLanguage": ["tr", "en", "de"],
       "author": { "@type": "Person", "name": "Erdem Erciyas" },
       "publisher": { "@type": "Organization", "name": "Fixral", "url": "https://fixral.com" },
       "featureList": [
@@ -73,15 +76,17 @@
         "Speed units m/s, km/h, mph, knot, ft/s and six flow directions",
         "Inspect probe, adaptive quality and customisable display",
         "WebGPU Lattice Boltzmann (D3Q19, LES) and MLS-MPM solvers with CPU fallback",
-        "PNG, CSV and JSON export"
+        "PNG, CSV and JSON export",
+        "Interface in Turkish, English and German",
+        "Vorti: built-in step-by-step guided assistant"
       ]
     }
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
-  <script type="module" crossorigin src="./assets/index-Cb-E9z0D.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-DOxBLBX8.css">
+  <script type="module" crossorigin src="./assets/index-D2lmVKA6.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-DX67oP1F.css">
 </head>
 <body>
   <noscript>
@@ -95,7 +100,7 @@
   <header class="bar">
     <a class="brand" href="https://fixral.com" target="_blank" rel="noopener" title="Fixral">
       <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="1" y="1" width="30" height="30" rx="3" fill="#16191d" stroke="#ffb020" stroke-width="1.5"/><path d="M6 19c4-6 12-7 20-4-7 2-13 3-20 4Z" fill="#ffb020"/><path d="M5 11h9M5 24h13" stroke="#7a828c" stroke-width="1.6" stroke-linecap="round"/></svg>
-      <span class="brand-text"><b>Fixral CFD</b><small>AERO LAB · v0.2</small></span>
+      <span class="brand-text"><b>Fixral CFD</b><small>AERO LAB · v0.3</small></span>
     </a>
     <div class="runbar">
       <button class="run-btn" id="playBtn" title="Başlat / duraklat (Boşluk)"><svg viewBox="0 0 24 24"><path d="M7 5v14l11-7z"/></svg></button>
@@ -111,6 +116,7 @@
     </div>
     <div class="bar-right">
       <span class="chip" id="fluidChip">Hava · 30 m/s</span>
+      <div class="seg small lang-seg" id="langSeg" role="group" aria-label="Dil"><button data-lang="tr">TR</button><button data-lang="en">EN</button><button data-lang="de">DE</button></div>
       <button class="icon-btn" id="helpBtn" title="Nasıl çalışır?">?</button>
       <button class="icon-btn" id="aboutBtn" title="Hakkında">i</button>
     </div>
@@ -143,7 +149,7 @@
           </div>
         </div>
         <h3>Akışa göre yönlendirme</h3>
-        <p class="hint">Akış her zaman <b class="x">+X</b> yönünde. Modelin burnu akışa (sola) bakmalı.</p>
+        <p class="hint" data-i18n="hintFlow">Akış her zaman <b class="x">+X</b> yönünde. Modelin burnu akışa (sola) bakmalı.</p>
         <div class="btn-row" id="rotBtns">
           <button class="btn ghost" data-rot="x">X +90°</button>
           <button class="btn ghost" data-rot="y">Y +90°</button>
@@ -291,7 +297,7 @@
           <div class="kv" id="cavRow" hidden><span>Kavitasyon riski</span><b id="rCav">—</b></div>
           <div class="kv"><span>Çözünürlük kalitesi</span><b id="rQual">—</b></div>
         </div>
-        <p class="hint">Fixral CFD bir <b>ön tasarım</b> aracıdır: eğilimleri, ayrılma bölgelerini ve tasarım karşılaştırmalarını hızlıca gösterir. Sertifikasyon veya nihai mühendislik kararları için ayrıntılı RANS/LES analizi ile doğrulayın.</p>
+        <p class="hint" data-i18n="hintPrelim">Fixral CFD bir <b>ön tasarım</b> aracıdır: eğilimleri, ayrılma bölgelerini ve tasarım karşılaştırmalarını hızlıca gösterir. Sertifikasyon veya nihai mühendislik kararları için ayrıntılı RANS/LES analizi ile doğrulayın.</p>
         <div class="btn-row">
           <button class="btn" id="exPng">PNG görüntü</button>
           <button class="btn" id="exCsv">CSV geçmiş</button>
@@ -367,15 +373,15 @@
   <dialog id="helpDlg" class="dlg">
     <h2>Nasıl çalışır?</h2>
     <ol>
-      <li><b>Vokselleştirme.</b> Model, çözüm ağına (ör. 128×64×64 = 524 bin hücre) ışın atma + sarım sayısı yöntemiyle yerleştirilir.</li>
-      <li><b>Kafes Boltzmann (LBM).</b> Her hücrede 19 yönlü (D3Q19) parçacık dağılımları çarpışır ve komşulara akar. Türbülans Smagorinsky LES ile modellenir.</li>
-      <li><b>Sınır koşulları.</b> Girişte sabit hız, çıkışta sıfır gradyan, yanlarda serbest akış, modelde yarı-yol geri sekme (no-slip). İsteğe bağlı hareketli zemin.</li>
-      <li><b>Kuvvetler.</b> Duvara çarpan dağılımların momentum değişiminden sürükleme ve taşıma hesaplanır, fiziksel birimlere (ρ, U, alan) ölçeklenir.</li>
-      <li><b>Görselleştirme.</b> Hız alanı ~10 Hz'de ana iş parçacığına aktarılır; izleyiciler RK2 ile taşınır, kesitler ve yüzey basıncı GPU'da çizilir.</li>
-      <li><b>Serbest yüzeyli su.</b> "Kanal / kutu" ve "Dış kaynaklı akıntı" modlarında su, WebGPU üzerinde MLS-MPM partikül yöntemiyle (yerçekimi, viskozite, sıçrama) çözülür ve ekran-uzayı sıvı render'ı ile pürüzsüz yüzey olarak çizilir. "Tamamen batık" mod nicel kuvvetler için LBM kullanır.</li>
-      <li><b>Görünümler.</b> Akım çizgileri, yüzey basıncı/hızı, boya, kesit, su yüzeyi; sağ alttaki göz simgesinden arka plan, ışık, gölge ve hangi yardımcıların görüneceği kişiselleştirilir.</li>
+      <li data-i18n="help1"><b>Vokselleştirme.</b> Model, çözüm ağına (ör. 128×64×64 = 524 bin hücre) ışın atma + sarım sayısı yöntemiyle yerleştirilir.</li>
+      <li data-i18n="help2"><b>Kafes Boltzmann (LBM).</b> Her hücrede 19 yönlü (D3Q19) parçacık dağılımları çarpışır ve komşulara akar. Türbülans Smagorinsky LES ile modellenir.</li>
+      <li data-i18n="help3"><b>Sınır koşulları.</b> Girişte sabit hız, çıkışta sıfır gradyan, yanlarda serbest akış, modelde yarı-yol geri sekme (no-slip). İsteğe bağlı hareketli zemin.</li>
+      <li data-i18n="help4"><b>Kuvvetler.</b> Duvara çarpan dağılımların momentum değişiminden sürükleme ve taşıma hesaplanır, fiziksel birimlere (ρ, U, alan) ölçeklenir.</li>
+      <li data-i18n="help5"><b>Görselleştirme.</b> Hız alanı ~10 Hz'de ana iş parçacığına aktarılır; izleyiciler RK2 ile taşınır, kesitler ve yüzey basıncı GPU'da çizilir.</li>
+      <li data-i18n="help6"><b>Serbest yüzeyli su.</b> "Kanal / kutu" ve "Dış kaynaklı akıntı" modlarında su, WebGPU üzerinde MLS-MPM partikül yöntemiyle (yerçekimi, viskozite, sıçrama) çözülür ve ekran-uzayı sıvı render'ı ile pürüzsüz yüzey olarak çizilir. "Tamamen batık" mod nicel kuvvetler için LBM kullanır.</li>
+      <li data-i18n="help7"><b>Görünümler.</b> Akım çizgileri, yüzey basıncı/hızı, boya, kesit, su yüzeyi; sağ alttaki göz simgesinden arka plan, ışık, gölge ve hangi yardımcıların görüneceği kişiselleştirilir.</li>
     </ol>
-    <p class="hint">Kısayollar: <kbd>Boşluk</kbd> başlat/duraklat · <kbd>R</kbd> sıfırla · <kbd>P</kbd> paneli gizle · <kbd>1–4</kbd> adımlar · <kbd>S</kbd> kesit · <kbd>I</kbd> incele · <kbd>V</kbd> görünüm paneli</p>
+    <p class="hint" data-i18n="helpKeys">Kısayollar: <kbd>Boşluk</kbd> başlat/duraklat · <kbd>R</kbd> sıfırla · <kbd>P</kbd> paneli gizle · <kbd>1–4</kbd> adımlar · <kbd>S</kbd> kesit · <kbd>I</kbd> incele · <kbd>V</kbd> görünüm paneli</p>
     <form method="dialog"><button class="btn primary">Tamam</button></form>
   </dialog>
   <dialog id="aboutDlg" class="dlg">
